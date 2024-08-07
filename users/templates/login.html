@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+
+{% endblock 'head' %}
+
+{% block 'body' %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 d-flex justify-content-center bg-img ">
+        </div>
+        <div class="col-md-10 d-flex justify-content-center bg-color-dark form-auth">
+            <div class="container-form">
+                <h1 class="text-logo">Investify</h1>
+                <h1>Sign in</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                        <section class="alert {{message.tags}}">
+                            {{message}}
+
+                        </section>
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+                    <label>Username</label>
+                    <input type="text" class="form-control input-pers" name="username" placeholder="Type username">
+                    <br>
+                    <label>Password</label>
+                    <input type="password" class="form-control input-pers" name="password" placeholder="Type password">
+                    <div class="centralize">
+                        <input type="submit" class="btn btn-indigo" value="Login">
+                        <a href="" class="texto">I don't hava an account</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+{% endblock 'body' %}
